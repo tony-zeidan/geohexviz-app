@@ -7,6 +7,9 @@ export const RegionMultipleLayerInput = (props : LayerMultipleInputPropType) => 
     const [rollers, setRollers] = useState<Array<RegionLayerPropType>>([]);
     const [activeTab, setActiveTab] = useState(1);
 
+    //TODO: convert tabulation into a custom component for other layer types
+    //TODO: change tabulation style - also when the first tab is created, it should be opened by default
+
     const addHandler = () => {
         if (rollers.length === props.maxLimit)
             return;
