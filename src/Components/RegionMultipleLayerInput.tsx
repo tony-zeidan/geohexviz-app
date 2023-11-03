@@ -1,39 +1,77 @@
-import { useState } from "react";
+import {useState} from 'react';
+import {LayerMultipleInputPropType, RegionLayerPropType} from "../Types/LayerTypes";
+import {RegionLayerInput} from "./RegionLayerInput";
 
-export const RegionMultipleLayerInput = () => {
-  const [rollers, setRollers] = useState([]);
+export const RegionMultipleLayerInput = (props : LayerMultipleInputPropType) => {
 
-  return (
-    <div>
-      <div className="form-floating mb-3">
-        <input
-          type="text"
-          className="form-control"
-          id="floatingInput"
-          placeholder=""
-        />
-        <label htmlFor="floatingInput">Region Name</label>
-      </div>
+    const [rollers, setRollers] = useState<Array<RegionLayerPropType>>([]);
+    const [activeTab, setActiveTab] = useState(1);
 
-      <div className="form-floating mb-3">
-        <input
-          type="text"
-          className="form-control"
-          id="floatingInput"
-          placeholder=""
-        />
-        <label htmlFor="floatingInput">Latitude Column</label>
-      </div>
-      
-      <div className="form-floating mb-3">
-        <input
-          type="text"
-          className="form-control"
-          id="floatingInput"
-          placeholder=""
-        />
-        <label htmlFor="floatingInput">Longitude Column</label>
-      </div>
-    </div>
-  );
-};
+    const addHandler = () => {
+        if (rollers.length === props.maxLimit)
+            return;
+
+        setRollers([...rollers, {id: rollers.length+1}]);
+    }
+
+    const removeHandler = () => {
+        if (rollers.length === 0)
+            return
+
+        const newRollers = [...rollers];
+        newRollers.pop();
+        setRollers(newRollers);
+    }
+
+    return (
+        <div>
+            {
+                <ul className="nav nav-tabs mb-3" id="regionlayer-tabs" role="tablist">
+                    { rollers.map((roller, index) => {
+                    return (
+                        <li className="nav-item" role="presentation">
+                            <a
+                                className="nav-link"
+                                id={`regionlayer-tab-${roller.id}`}
+                                data-mdb-toggle="tab"
+                                href={`#regionlayer-tab-${roller.id}`}
+                                role="tab"
+                                aria-controls={`regionlayer-tab-${roller.id}`}
+                                aria-selected="true"
+                                onClick={() => setActiveTab(index)}
+                            >
+                                {`Layer: ${roller.id}`}
+                            </a>
+                        </li>
+                    );
+                }) }
+                </ul>
+            }
+            {
+                <div className="tab-content" id="regionlayer-tabs">
+                    {
+                        rollers.map((roller, index) => {
+                            return (
+                                <div
+                                    className={`tab-pane fade${index === activeTab ? ' show active' : ''}`}
+                                    key={index}
+                                    id={`regionlayer-tab-${roller.id}`}
+                                    role="tabpanel"
+                                    aria-labelledby={`regionlayer-tab-${roller.id}`}
+                                >
+                                    <RegionLayerInput id={roller.id}/>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            }
+
+            <div className="btn-group" role="group" aria-label="addRemoveButtonGroup">
+                <button type="button" className="btn btn-light" onClick={addHandler}>Add</button>
+                <button type="button" className="btn btn-light" onClick={removeHandler}>Remove</button>
+            </div>
+        </div>
+
+    );
+}
