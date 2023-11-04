@@ -1,26 +1,16 @@
-import {RegionLayerPropType} from "../Types/LayerTypes";
-
+import { InputGroup } from "./ui-components/InputGroup.tsx";
+import { RegionLayerPropType } from "./utils/types.ts";
 
 export const RegionLayerInput = (props: RegionLayerPropType) => {
+  return (
+    <div>
+      <InputGroup label="Layer Id" placeholder={String(props.id)} />
 
-    return (
-        <div>
-            <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInput" placeholder={props.id} />
-                <label htmlFor="floatingInput">Layer Id</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInput" placeholder="" />
-                <label htmlFor="floatingInput">Region Name</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInput" placeholder="" />
-                <label htmlFor="floatingInput">Latitude Column</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInput" placeholder="" />
-                <label htmlFor="floatingInput">Longitude Column</label>
-            </div>
-        </div>
-    );
-}
+      <InputGroup label="Region Name" />
+
+      <InputGroup label="Latitude Column" />
+
+      <InputGroup label="Longitude Column" />
+    </div>
+  );
+};
