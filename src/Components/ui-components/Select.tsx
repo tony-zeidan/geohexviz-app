@@ -11,7 +11,7 @@ export interface SelectProps {
   className?: string;
 }
 
-export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
+const Select = React.forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     const {
       options,
       defaultValue,
@@ -45,3 +45,5 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((props, r
     );
   }
 );
+
+export default Select;

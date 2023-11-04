@@ -1,7 +1,5 @@
 import { BinningFunctionOpts } from "./utils/constants";
-import { InputGroup } from "./ui-components/InputGroup";
-import { Select } from "./ui-components/Select";
-import { Range } from "./ui-components/Range";
+import { InputGroup, Select, Range } from "./ui-components";
 
 export const HexbinLayerInput = () => {
   return (

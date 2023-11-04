@@ -1,4 +1,4 @@
-import { InputGroup } from "./ui-components/InputGroup.tsx";
+import { InputGroup } from "./ui-components";
 import { RegionLayerPropType } from "./utils/types.ts";
 
 export const RegionLayerInput = (props: RegionLayerPropType) => {

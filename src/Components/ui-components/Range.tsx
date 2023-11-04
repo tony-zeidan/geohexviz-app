@@ -10,7 +10,7 @@ export interface RangeProps {
   onChange?: any;
 }
 
-export const Range = React.forwardRef<HTMLInputElement, RangeProps>((props, ref) => {
+const Range = React.forwardRef<HTMLInputElement, RangeProps>((props, ref) => {
     const { label, min, max, step, className, onChange, ...rest } = props;
 
     return (
@@ -33,3 +33,5 @@ export const Range = React.forwardRef<HTMLInputElement, RangeProps>((props, ref)
     );
   }
 );
+
+export default Range;

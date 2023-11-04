@@ -1,4 +1,4 @@
-import { InputGroup } from "./ui-components/InputGroup";
+import { InputGroup } from "./ui-components";
 
 export const GridLayerInput = () => {
   return (

@@ -9,7 +9,7 @@ interface InputProps {
   className?: string;
 }
 
-export const InputGroup = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const InputGroup = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     const {
       placeholder = "",
       label,
@@ -35,3 +35,5 @@ export const InputGroup = React.forwardRef<HTMLInputElement, InputProps>((props,
     );
   }
 );
+
+export default InputGroup;
